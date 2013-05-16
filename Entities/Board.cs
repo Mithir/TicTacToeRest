@@ -7,80 +7,34 @@ namespace TicTacToe.BL
 {
     public class Board
     {
-        public PlayerMark[][] Representation{ get; private set; }
-        private static readonly int[,] combinations = new int[3,3] { {1,2,4 }, {8,16,32 }, {64,128,256 } };
+        //public PlayerMark[][] Representation{ get; private set; }
+        public int[][] representation{ get; private set; }
+
+        private static readonly int[,] combinations = new int[3, 3] { { 1, 2, 4 }, { 8, 16, 32 }, { 64, 128, 256 } };
         private static readonly int[] wins = new int[] { 7, 56, 448, 73, 146, 292, 273, 84 };
-        
+
         public Board()
         {
-            Representation = new PlayerMark[3][] {
-                                 new PlayerMark[3] ,
-                                 new PlayerMark[3] ,
-                                 new PlayerMark[3] ,
-                               } ;
-            
+            representation = new int[3][] {
+                                 new int[3] ,
+                                 new int[3] ,
+                                 new int[3] ,
+                               };
+
             InitBoard();
         }
 
-        private void InitBoard()
+        private void InitBoard(){ }
+
+        internal Boolean SetMove(int colPos, int rowPos, int playerId)
         {
-        }
-
-        public void SetMove(int position, PlayerMark playerMark)
-        {
-            int left;
-            int right;
-            if (position < 1 || position > 9)
+            if (representation[rowPos][colPos] != 0)
             {
-                throw new ArgumentOutOfRangeException("position", position, "Position must be between 1 and 9");
+                //throw new InvalidOperationException(String.Format("position {0},{1} is already occupied", rowPos, colPos));
+                return false;
             }
-            left = (position-1) % 3;
-            right = (position - 1) / 3;
-            if (Representation[left][right] != PlayerMark.None)
-            {
-                throw new InvalidOperationException(String.Format("position {0} is already occupied", position));
-            }
-            Representation[left][right] = playerMark;
-        }
-
-        private int GetCount(PlayerMark playerMark)
-        {
-            Int32 count = 0;
-            foreach (PlayerMark[] rows in Representation)
-            {
-                foreach (PlayerMark mark in rows)
-                {
-                    if (mark == playerMark)
-                    {
-                        count++;
-                    }
-                }
-            }
-            return count;
-        }
-
-        public PlayerMark GetWinner()
-        {
-            Int32 xCounter = 0;
-            Int32 oCounter = 0;
-
-            for (Int32 i = 0; i < 3; i++)
-            {
-                for (Int32 j = 0; j < 3; j++)
-                {
-                    if (Representation[i][j] == PlayerMark.Circle)
-                        oCounter += combinations[i, j];
-                    if (Representation[i][j] == PlayerMark.X)
-                        xCounter += combinations[i, j];
-                }
-            }
-
-            if (wins.Contains(oCounter))
-                return PlayerMark.Circle;
-            if (wins.Contains(xCounter))
-                return PlayerMark.X;
-
-            return PlayerMark.None;
+            representation[rowPos][colPos] = playerId;
+            return true;
         }
     }
 }

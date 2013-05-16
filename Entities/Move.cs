@@ -7,8 +7,10 @@ namespace TicTacToe.BL
 {
     public class Move
     {
-        public Int32 Position { get; set; }
+        public Int32 ColPosition { get; set; }
+        
+        public Int32 RowPosition { get; set; }
 
-        public PlayerMark Mark { get; set; }
+        public Int32 PlayerId { get; set; }
     }
 }

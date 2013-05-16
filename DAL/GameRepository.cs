@@ -11,7 +11,7 @@ namespace TicTacToe.DAL
     {
         public static string NewGames = "urn:g>new:";
 
-        public RedisClient redisClient = new RedisClient();
+        public static RedisClient redisClient = new RedisClient();
         public bool StoreGame(Game game)
         {
             using (var redisGames = redisClient.As<Game>())

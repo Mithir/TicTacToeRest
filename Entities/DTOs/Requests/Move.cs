@@ -7,13 +7,13 @@ using ServiceStack.ServiceHost;
 
 namespace TicTacToe.DTOs.Requests
 {
-    [Route("/game/{Id}", "PUT")]
+    [Route("/game/", "PUT")]
     public class NewMove
     {
-        public Guid Id { get; set; }
+        public Guid GameId { get; set; }
 
         public Int32 Position { get; set; }
 
-        public PlayerMark Mark { get; set; }
+        public Int32 PlayerId { get; set; }
     }
 }

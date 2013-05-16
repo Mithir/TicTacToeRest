@@ -10,7 +10,7 @@ namespace TicTacToe.DTOs.Requests
     [Route("/game/", "POST")]
     public class CreateGame
     {
-        public PlayerMark Mark { get; set; }
+        //public PlayerMark Mark { get; set; }
 
         public Int32 PlayerId { get; set; }
 

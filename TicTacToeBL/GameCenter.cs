@@ -15,7 +15,7 @@ namespace TicTacToe.BL
         public GameResponse CreateGame(CreateGame gameRequest)
         {
             Board board = new Board();
-            Game game = Game.CreateNewGame(gameRequest.Mark, gameRequest.PlayerId, gameRequest.Position);
+            Game game = Game.CreateNewGame(gameRequest.PlayerId, gameRequest.Position);
             
             if (gameRepository.StoreNewGame(game))
             {
@@ -44,8 +44,8 @@ namespace TicTacToe.BL
 
         public GameResponse MakeAMove(NewMove request)
         {
-            Game game = gameRepository.GetGame(request.Id);
-            game.MakeMove(request.Mark, request.Position);
+            Game game = gameRepository.GetGame(request.GameId);
+            game.MakeMove(request.PlayerId, request.Position);
             gameRepository.StoreGame(game);
             return GameResponseFrom(game);
         }
