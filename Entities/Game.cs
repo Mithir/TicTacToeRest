@@ -10,14 +10,17 @@ namespace TicTacToe.BL
         public Boolean Finished { get; set; }
         public Guid Id { get; set; }
         public Board Board { get; set; }
-        public Player CirclePlayer { get; set; }
-        public Player XPlayer { get; set; }
+        public Player Creator { get; set; }
+        public Player Joiner { get; set; }
         public List<Move> Moves { get; set; }
         
         public void MakeMove(Int32 playerId, Int32 position)
         {
             if (Finished) { throw new InvalidOperationException("Game is finished"); }
+            if (Creator.Id != playerId && Joiner != null && Joiner.Id != 0 && Joiner.Id != playerId) { throw new InvalidOperationException(String.Format("player {0} is not in this game!", playerId)); }
             if (Moves != null && Moves.Count>=1 && Moves[Moves.Count - 1].PlayerId == playerId) { throw new InvalidOperationException("It is not your turn"); }
+
+            if (Creator.Id != playerId && Joiner == null) { SetOpponent(playerId); };
 
             int rowPos;
             int colPos;
@@ -49,7 +52,7 @@ namespace TicTacToe.BL
             {
                 Id = Guid.NewGuid(),
                 Board = new Board(),
-                XPlayer = new Player { Id = playerId },
+                Creator = new Player { Id = playerId },
                 Moves = new List<Move>()
             };
 
@@ -76,14 +79,7 @@ namespace TicTacToe.BL
 
         public void SetOpponent(int userId)
         {
-            if (XPlayer == null)
-            {
-                XPlayer = new Player { Id = userId };
-            }
-            else
-            {
-                CirclePlayer = new Player { Id = userId };
-            }
+           Joiner = new Player { Id = userId };
         }
 
         
@@ -91,10 +87,9 @@ namespace TicTacToe.BL
         {
             int left;
             int right;
-            if (position < 1 || position > 9)
-            {
-                throw new ArgumentOutOfRangeException("position", position, "Position must be between 1 and 9");
-            }
+            if (Creator.Id != playerId && Joiner !=null && Joiner.Id != playerId) { throw new InvalidOperationException(String.Format("player {0} is not in this game!",playerId)); }
+            if (position < 1 || position > 9){throw new ArgumentOutOfRangeException("position", position, "Position must be between 1 and 9"); }
+            
             left = (position - 1) / 3;
             right = (position - 1) % 3;
 

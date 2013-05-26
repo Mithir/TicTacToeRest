@@ -49,12 +49,17 @@
     <Compile Include="Board.cs" />
     <Compile Include="DTOs\Requests\AllGames.cs" />
     <Compile Include="DTOs\Requests\CreateGame.cs" />
+    <Compile Include="DTOs\Requests\DeleteAll.cs" />
     <Compile Include="DTOs\Requests\ExistingGame.cs" />
     <Compile Include="DTOs\Requests\JoinNewGame.cs" />
     <Compile Include="DTOs\Requests\Move.cs" />
+    <Compile Include="DTOs\Requests\UserGames.cs" />
     <Compile Include="DTOs\Responses\AllGamesResponse.cs" />
     <Compile Include="DTOs\Responses\GameResponse.cs" />
     <Compile Include="Game.cs" />
+    <Compile Include="GameStoredEventArgs.cs" />
+    <Compile Include="Interfaces\IGameCenter.cs" />
+    <Compile Include="Interfaces\IGameRepository.cs" />
     <Compile Include="Move.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="PlayerMark.cs" />

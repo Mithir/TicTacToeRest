@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual C# Express 2010
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToe", "TicTacToe\TicTacToe.csproj", "{05905177-DD78-420A-AEAD-51B9D118B281}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToeBL", "TicTacToeBL\TicTacToeBL.csproj", "{EF62BE3A-1D7B-4DB5-9A1A-5B5FF257528B}"
@@ -8,6 +8,13 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{8F296F9E-0827-421B-B9AE-AECF51B8B77F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Entities\Entities.csproj", "{ABA73424-6575-46EB-B9B5-869636D13669}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToe.SignalR", "TicTacToe.SignalR\TicTacToe.SignalR.csproj", "{FDA9F5CD-34AD-4033-8E18-736D2F17C58F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{8FFB8022-D26B-40BC-A2A2-E68161C089FB}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\packages.config = .nuget\packages.config
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,6 +66,16 @@ Global
 		{ABA73424-6575-46EB-B9B5-869636D13669}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{ABA73424-6575-46EB-B9B5-869636D13669}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{ABA73424-6575-46EB-B9B5-869636D13669}.Release|x86.ActiveCfg = Release|Any CPU
+		{FDA9F5CD-34AD-4033-8E18-736D2F17C58F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDA9F5CD-34AD-4033-8E18-736D2F17C58F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDA9F5CD-34AD-4033-8E18-736D2F17C58F}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{FDA9F5CD-34AD-4033-8E18-736D2F17C58F}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{FDA9F5CD-34AD-4033-8E18-736D2F17C58F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{FDA9F5CD-34AD-4033-8E18-736D2F17C58F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDA9F5CD-34AD-4033-8E18-736D2F17C58F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDA9F5CD-34AD-4033-8E18-736D2F17C58F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{FDA9F5CD-34AD-4033-8E18-736D2F17C58F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{FDA9F5CD-34AD-4033-8E18-736D2F17C58F}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
