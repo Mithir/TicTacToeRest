@@ -2,14 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using ServiceStack.ServiceInterface;
-using ServiceStack.ServiceHost;
 using TicTacToe.DTOs.Requests;
 using TicTacToe.DTOs.Responses;
 using TicTacToe.BL;
 using Entities.DTOs.Requests;
-using ServiceStack.Common.Web;
 using Entities.Interfaces;
+using ServiceStack;
 
 namespace TicTacToe.Services
 {    

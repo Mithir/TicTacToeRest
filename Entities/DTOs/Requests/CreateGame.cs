@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using ServiceStack.ServiceHost;
+using ServiceStack;
 using TicTacToe.BL;
 
 namespace TicTacToe.DTOs.Requests

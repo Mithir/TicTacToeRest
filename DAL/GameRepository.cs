@@ -26,13 +26,12 @@ namespace TicTacToe.DAL
             //public static string UpVotes(long userId) { return "urn:user>q+:" + userId; }
             //public static string DownVotes(long userId) { return "urn:user>q-:" + userId; }
         }
-
-        public static RedisClient redisClient = new RedisClient();
         
         public bool StoreGame(Game game)
         {
-            using (var redisGames = redisClient.As<Game>())
+            using (var redisClient = new RedisClient())
             {
+                var redisGames = redisClient.As<Game>();
                 var newGamesIds = redisClient.GetAllItemsFromSet(NewGames);
                 if (newGamesIds.Contains(game.Id.ToString()))
                 {
@@ -48,24 +47,27 @@ namespace TicTacToe.DAL
 
         public Game GetGame(Guid gameGuid)
         {
-            using (var redisGames = redisClient.As<Game>())
+            using (var redisClient = new RedisClient())
             {
+                var redisGames = redisClient.As<Game>();
                 return redisGames.GetById(gameGuid);
             }
         }
 
         public IList<Game> GetAllGames()
         {
-            using (var redisGames = redisClient.As<Game>())
+            using (var redisClient = new RedisClient())
             {
+                var redisGames = redisClient.As<Game>();
                 return redisGames.GetAll();
             }
         }
 
         public bool StoreNewGame(Game game)
         {
-            using (var redisGames = redisClient.As<Game>())
+            using (var redisClient = new RedisClient())
             {
+                var redisGames = redisClient.As<Game>();
                 redisGames.Store(game);
                 redisClient.AddItemToSet(NewGames, game.Id.ToString());
             }
@@ -74,8 +76,9 @@ namespace TicTacToe.DAL
 
         public Game GetNewestGame(Int32 userId)
         {
-            using (var redisGames = redisClient.As<Game>())
+            using (var redisClient = new RedisClient())
             {
+                var redisGames = redisClient.As<Game>();
                 var newGamesIds = redisClient.GetAllItemsFromSet(NewGames);
                 
                 if (newGamesIds == null || newGamesIds.Count == 0)
@@ -100,8 +103,9 @@ namespace TicTacToe.DAL
         
         public IList<Game> GetAllGames(int userId)
         {
-            using (var redisGames = redisClient.As<Game>())
+            using (var redisClient = new RedisClient())
             {
+                var redisGames = redisClient.As<Game>();
                 var gameIds = redisClient.GetAllItemsFromSet(UserGameIndex.Games(userId));
                 var games = redisGames.GetByIds(gameIds);
                 return games;
@@ -110,11 +114,13 @@ namespace TicTacToe.DAL
 
         public void AddGameToUser(Game game, int userId)
         {
+            var redisClient = new RedisClient();
             redisClient.AddItemToSet(UserGameIndex.Games(userId),game.Id.ToString());
         }
 
         public void DeleteDB()
         {
+            var redisClient = new RedisClient();
             redisClient.FlushDb();
         }
 

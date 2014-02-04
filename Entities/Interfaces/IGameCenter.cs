@@ -2,23 +2,25 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Entities.DTOs.Requests;
+using TicTacToe.DTOs.Requests;
 using TicTacToe.DTOs.Responses;
 
 namespace Entities.Interfaces
 {
     public interface IGameCenter
     {
-        GameResponse CreateGame(TicTacToe.DTOs.Requests.CreateGame request);
+        GameResponse CreateGame(CreateGame request);
 
-        GameResponse GetGame(TicTacToe.DTOs.Requests.ExistingGame request);
+        GameResponse GetGame(ExistingGame request);
 
-        GameResponse JoinNewGame(TicTacToe.DTOs.Requests.JoinNewGame request);
+        GameResponse JoinNewGame(JoinNewGame request);
 
-        AllGamesResponse GetAllGames(TicTacToe.DTOs.Requests.AllGames request);
+        AllGamesResponse GetAllGames(AllGames request);
 
-        GameResponse MakeAMove(TicTacToe.DTOs.Requests.NewMove request);
+        GameResponse MakeAMove(NewMove request);
 
-        AllGamesResponse GetUserGames(Entities.DTOs.Requests.UserGames request);
+        AllGamesResponse GetUserGames(UserGames request);
 
         void DeleteAll();
     }
